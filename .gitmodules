@@ -1,0 +1,9 @@
+[submodule "lib/GyverPID"]
+	path = lib/GyverPID
+	url = git@github.com:urpylka/GyverPID.git
+[submodule "lib/QuadDisplay"]
+	path = lib/QuadDisplay
+	url = git@github.com:urpylka/QuadDisplay.git
+[submodule "lib/GyverPWM"]
+	path = lib/GyverPWM
+	url = git@github.com:urpylka/GyverPWM.git
