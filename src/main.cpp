@@ -1,13 +1,13 @@
 #include <Arduino.h>
-#include <GyverPID.h>
+// #include <GyverPID.h>
 #include <QuadDisplay.h>
-#include <termistor.h>
-#include <rheostat.h>
+// #include <termistor.h>
+// #include <rheostat.h>
 
-#define PIN_TEMP A4
-#define PIN_REGUL A3
+// #define PIN_TEMP A4
+// #define PIN_REGUL A3
 #define PIN_DISP 9
-#define PIN_TRIAC 3
+// #define PIN_TRIAC 3
 
 // GyverPID regulator(0.1, 0.05, 0.01, 100); // P, I, D, dt (ms)
 // QuadDisplay qd(PIN_DISP); // номер пина CS
@@ -31,9 +31,9 @@ void flash(int N=10)
 void setup()
 {
     CLKPR = _BV(CLKPCE); // allow to change frequency devider
-    // CLKPR = 0; // 1 MHz
+    CLKPR = 0; // 1 MHz
     // CLKPR = _BV(CLKPS0); // 8 MHz
-    CLKPR = _BV(CLKPS1) | _BV(CLKPS0); // 16 MHz
+    // CLKPR = _BV(CLKPS1) | _BV(CLKPS0); // 16 MHz
 
     // regulator.setDirection(NORMAL);
     // regulator.setLimits(0, 255);
@@ -44,10 +44,21 @@ void setup()
 
     flash();
 
+
+    pinMode(PIN_DISP, OUTPUT);
+    // turnOffPWM work here:
+    digitalWrite(PIN_DISP, HIGH);
+
+    sendByte(PIN_DISP, 0b10011111);
+    sendByte(PIN_DISP, 0b00100101);
+    sendByte(PIN_DISP, 0b00001101);
+    sendByte(PIN_DISP, 0b10011001);
+    latch(PIN_DISP);
+
     // qd.begin();
     // qd.displayInt(123);
     // displayInt(PIN_DISP, 123);
-    displayDigits(PIN_DISP, 1, 2, 3, 4);
+    // displayDigits(PIN_DISP, 1, 2, 3, 4);
 }
 
 // unsigned int last_time = millis();
