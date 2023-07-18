@@ -1,7 +1,8 @@
 #ifndef rheostat_H_
 #define rheostat_H_
 
-#define MIN_TEMP 50
+#define MIN_TEMP 20
+// #define MIN_TEMP 50
 #define MAX_TEMP 400
 
 #include <Arduino.h>
