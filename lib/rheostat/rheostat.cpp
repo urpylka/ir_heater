@@ -7,7 +7,6 @@ Rheostat::Rheostat(uint8_t _PIN_RESISTOR)
 
 bool Rheostat::is_updated()
 {
-    val;
     int new_val = this->read();
     bool res = false;
 
